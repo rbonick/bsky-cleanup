@@ -1,12 +1,14 @@
-import { AppBskyFeedDefs } from "@atproto/api";
+"use client";
 
-interface PostProps {
-    author: String
-}
+import { AppBskyFeedDefs } from "@atproto/api";
+import { useState } from 'react';
 
 export function Post({ post }: { post: AppBskyFeedDefs.PostView }) {
+    const [selected, setSelected] = useState(false);
+    const bgClass = selected ? "bg-teal-300" : "bg-slate-100"
+
     return (
-        <div className="grid bg-slate-100 rounded p-4">
+        <div className={`grid rounded p-4 ${bgClass}`} onClick={() => setSelected(!selected)}>
             <div className="w-full">
                 <div className="flex flex-row items-center">
                     <img
